@@ -218,6 +218,15 @@ var UPDATE_COMPLETE = 'UpdateComplete';
                         &dwWritten,
                         NULL);
                 }
+                
+               if (wcsstr(static_cast<wchar_t*>(lpBuffer), L"<ErrorCode>150009</ErrorCode>")) { //HTTP ERROR 500 没测 如果出现这个建议重启服务
+                    cout << "重新获取ing" << endl << endl << endl << endl;
+                    WriteFile(hPipe,
+                        wcL2,
+                        2 * wcslen(wcL2),
+                        &dwWritten,
+                        NULL);
+                }
             } while (true);
 
             //没登录成功可以重新开一次试试 (Ticket过期)
