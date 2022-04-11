@@ -6,6 +6,7 @@ using namespace std;
 #define BUF_SIZE 4096
 // 定义管道名 , 如果是跨网络通信 , 则在圆点处指定服务器端程序所在的主机名
 #define EXAMP_PIPE   L"\\\\.\\pipe\\ESurfingClientPipe"
+//HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ctc_ESurfing
 
 void __fastcall DoStartSvc();
 
