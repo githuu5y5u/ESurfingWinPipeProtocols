@@ -11,15 +11,21 @@ class Test extends Thread{
 	        int charCode = pipe.read();
 	        
 	        bao.write(charCode);
-
-
-	        System.out.println(bao.toString("utf-16le").replace("</M>", "</M>\n"));
+	        
+	        String current = bao.toString("utf-16le");
+	        
+	        if(current.contains("</M>")) {
+	        	System.out.println(current);
+	        	
+	        	if(!current.contains(_for))
+	        		bao.reset();
+	        	else
+	        		return current;
+	        }
+	        
 	    	
-	    } while(!bao.toString("utf-16le").contains(_for) || !bao.toString("utf-16le").endsWith("</M>"));
-	    
-	    return bao.toString("utf-16le").replace("</M>", "</M>\n");
+	    } while(true);
 	}
-
 
 	
 	public static void main(String[] m) throws Exception {
