@@ -14,7 +14,7 @@ class Test extends Thread{
 	        
 	        String current = bao.toString("utf-16le");
 	        
-	        if(current.contains("</M>")) {
+	        if(current.endsWith("</M>")) {
 	        	System.out.println(current);
 	        	
 	        	if(!current.contains(_for))
