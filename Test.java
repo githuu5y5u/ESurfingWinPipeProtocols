@@ -1,5 +1,8 @@
 import java.io.ByteArrayOutputStream;
 import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class Test extends Thread{
 	//\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ctc_ESurfing
