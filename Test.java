@@ -6,11 +6,15 @@ import java.util.regex.Pattern;
 
 class Test extends Thread{
 	//\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ctc_ESurfing
+	static Pattern fullValue = Pattern.compile("<[^<>//]*>[^<>]*</+[^<>]*>");
+	static Pattern key = Pattern.compile("^[^<>/]*");
+	static Pattern keyReplace = Pattern.compile("<[^<>]*>");
+	
 	static String readFor(RandomAccessFile pipe, String _for) throws Exception {
 
 	    final ByteArrayOutputStream bao = new ByteArrayOutputStream();
 		    
-	    do{
+	    do {
 	        int charCode = pipe.read();
 	        
 	        bao.write(charCode);
@@ -19,10 +23,16 @@ class Test extends Thread{
 	        
 	        if(current.endsWith("</M>")) {
 	        	
-	        	Pattern p = Pattern.compile("<[^<>//]*>[^<>]*</+[^<>]*>"); 
-	        	Matcher m = p.matcher(current); 
+	        	Matcher m = fullValue.matcher(current); 
 	        	while(m.find()) { 
-	        	     System.out.println(m.group()); 
+	        		 String result = m.group();
+	        		 
+	        		 Matcher matcher2 = key.matcher(result.substring(1));
+	        		 matcher2.find();
+	        		 
+	        		 Matcher matcher3 = keyReplace.matcher(result);
+	        		 
+	        	     System.out.println(result + "\t->\t" + matcher2.group() + "\t->\t" + matcher3.replaceAll(""));
 	        	}
 	        	
 	        	System.out.println(current);
