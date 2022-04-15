@@ -9,14 +9,17 @@ class Test extends Thread{
 		    
 	    do{
 	        int charCode = pipe.read();
-	        int charCodeLE = pipe.read();
 	        
-	          bao.write(charCode);
-	          bao.write(charCodeLE);
+	        bao.write(charCode);
+
+
+	        System.out.println(bao.toString("utf-16le").replace("</M>", "</M>\n"));
+	    	
 	    } while(!bao.toString("utf-16le").contains(_for) || !bao.toString("utf-16le").endsWith("</M>"));
 	    
 	    return bao.toString("utf-16le").replace("</M>", "</M>\n");
 	}
+
 
 	
 	public static void main(String[] m) throws Exception {
