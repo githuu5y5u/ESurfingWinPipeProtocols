@@ -2,7 +2,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.RandomAccessFile;
 
 class Test extends Thread{
-	
+	//\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ctc_ESurfing
 	static String readFor(RandomAccessFile pipe, String _for) throws Exception {
 
 	    ByteArrayOutputStream bao = new ByteArrayOutputStream();
