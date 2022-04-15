@@ -24,12 +24,7 @@ class Test extends Thread{
 			  RandomAccessFile pipe = new RandomAccessFile("\\\\.\\pipe\\ESurfingClientPipe", "rw");
 			  String echoText = "<M><OpS>Portal</OpS><OpT>Portal</OpT><OpC>ClientStart</OpC><P></P></M>";
 			  
-			  for(int i = 0 ; i < echoText.getBytes().length; i++) {
-				  pipe.write (echoText.getBytes()[i]);
-				  pipe.write ('\0');
-			  }
-			  
-			  pipe.getFD().sync();
+			  pipe.write(echoText.getBytes("utf-16le"));
 			  
 			  //It will blocks after close.
 			  
