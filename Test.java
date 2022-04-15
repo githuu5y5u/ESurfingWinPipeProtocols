@@ -12,7 +12,7 @@ class Test extends Thread{
 	        
 	        bao.write(charCode);
 	        
-	        String current = bao.toString("utf-16le");
+	        String current = bao.toString(StandardCharsets.UTF_16LE.name());
 	        
 	        if(current.endsWith("</M>")) {
 	        	System.out.println(current);
@@ -33,7 +33,7 @@ class Test extends Thread{
 			  final RandomAccessFile pipe = new RandomAccessFile("\\\\.\\pipe\\ESurfingClientPipe", "rw");
 			  String echoText = "<M><OpS>Portal</OpS><OpT>Portal</OpT><OpC>ClientStart</OpC><P></P></M>";
 
-			  pipe.write(echoText.getBytes("utf-16le"));
+			  pipe.write(echoText.getBytes(StandardCharsets.UTF_16LE));
 			  
 			  System.out.println("write ok");
 			  
@@ -44,7 +44,7 @@ class Test extends Thread{
 			  
 			  echoText = "<M><OpS>Portal</OpS><OpT>Portal</OpT><OpC>CheckEnv</OpC><P></P></M>";
 
-			  pipe.write(echoText.getBytes("utf-16le"));
+			  pipe.write(echoText.getBytes(StandardCharsets.UTF_16LE));
 			  
 			  System.out.println(readFor(pipe, "TicketResp"));
 			} catch (Exception e) {
